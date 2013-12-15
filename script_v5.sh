@@ -5,6 +5,7 @@
 # add readfile.out, which returns the number of points
 # countRFI.out now needs one more parameter, the number of data points
 # add basic_info, which shows the average, sigma and rms of each beam
+# version control by git
 
 export route="../lustre/projects/p002_swin/surveys/HTRU/medlat"
 ls -l $route/ | grep '2009' | awk '{print $9}' > list
