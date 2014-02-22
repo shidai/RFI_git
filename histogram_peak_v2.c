@@ -1,15 +1,12 @@
-// calculate the histogram of energy
-// input: a is the start point, n is the number of bins; an one column file listing the energy is needed (awk '{print $5}' ../countRFI.txt > energy)
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
 int main (int argc, char *argv[])
 {
-	int a;
 	int n;
 
-	if (argc != 4)
+	if (argc != 3)
 	{
 		printf ("Usage: gsl-histogram xmin xmax n\n"
 			"Computes a histogram of the data "
@@ -18,9 +15,8 @@ int main (int argc, char *argv[])
 		exit (0);
 	}
 
-	a = atoi (argv[2]);
 	//b = atof (argv[3]);
-	n = atoi (argv[3]);
+	n = atoi (argv[2]);
 
 	int *count = (int *)malloc(n * sizeof(int));
 
@@ -41,11 +37,12 @@ int main (int argc, char *argv[])
 			exit(1);
 		}
 
+		double cut = log10(30000);
 		while (fscanf (fp, "%f", &x) == 1)
 		{
-			if ( ((x-a)/10000) < n )
+			if ( log10(x)-cut > 0 && ((log10(x)-cut)/0.02) < n )
 			{
-				index = (x - a)/10000;
+				index = (int)((log10(x)-cut)/0.02);
 				count[index] += 1;
 			}
 		}
@@ -56,8 +53,8 @@ int main (int argc, char *argv[])
 
 		for (i = 0; i < n; i++)
 		{
-			printf ("%d %d\n", a+i*10000, count[i]);
-			printf ("%d %d\n", a+(i+1)*10000, count[i]);
+			printf ("%f %d\n", i*0.02+cut, count[i]);
+			printf ("%f %d\n", (i+1)*0.02+cut, count[i]);
 		}
 
 	}

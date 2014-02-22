@@ -39,9 +39,10 @@ int main (int argc, char *argv[])
 			exit(1);
 		}
 
+		double cut = log10(30000);
 		while (fscanf (fp, "%f", &x) == 1)
 		{
-			if ( ((x-a)/500) < n )
+			if ( x-a > 0 && ((x-a)/500) < n )
 			{
 				index = (x - a)/500;
 				count[index] += 1;

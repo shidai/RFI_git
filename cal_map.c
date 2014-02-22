@@ -17,18 +17,27 @@ int main (int argc, char *argv[])
 
 	// printf ("%d\n", i);
 	float az,el;
-        int i,n;
+        int i,n,norm;
 
         float r;
         float x,y;
 
         i=0;
-	while (fscanf (fp, "%f %f %d", &az, &el, &n) == 3)
+	while (fscanf (fp, "%f %f %d %d", &az, &el, &n, &norm) == 4)
 		{
 			r=cos(el*3.1415926/180.0);
-                        x=r*cos(az*3.1415926/180.0);
-                        y=r*sin(az*3.1415926/180.0);
-			printf ("%f %f %d\n", x, y, n);
+                        x=r*cos((az-90)*3.1415926/180.0);
+                        y=-r*sin((az-90)*3.1415926/180.0);
+                        //x=r*cos((az+90)*3.1415926/180.0);
+                        //y=r*sin((az+90)*3.1415926/180.0);
+			if (n>0)
+			{
+				printf ("%f %f %d\n", x, y, n/norm);
+			}
+			else
+			{
+				printf ("%f %f %d\n", x, y, n);
+			}
 			i++;
                         if ((i%360)==0)
 			    printf ("\n");

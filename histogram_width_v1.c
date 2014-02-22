@@ -1,3 +1,5 @@
+// calculate the histogram of width
+// input: a is the start point, n is the number of bins; an one column file listing the width is needed (awk '{print $4}' ../countRFI.txt > width)
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
