@@ -31,7 +31,7 @@ int cal_devi(float *data, int num, float *ave, float *devi)
 	{
 		sigma+=(data[i]-mean)*(data[i]-mean);
 	}
-	sigma=sigma/num;
+	sigma=sqrt(sigma/num);
 
 	//printf ("%f %f\n", ave, devi);
 	
@@ -49,29 +49,34 @@ int iter_devi(float *data, int num, float *ave, float *devi)
 	float mean,sigma;
 	cal_devi(data, num, &mean, &sigma);
 
-	int count=1;
+	int count1=0;
+	int count2=0;
 
-	while (count>0)
+	int j=0;
+	for (i=0;i<num;i++)
 	{
-		int j=0;
-		for (i=0;i<num;i++)
+		if (fabs(data[i]-mean)/5 >= sigma)
 		{
-			if (fabs(data[i]-mean)/5 < sigma)
-			{
-				j++;
-			}
+			count1++;
 		}
+		else
+		{
+			j++;
+		}
+	}
 
+	while (count1>count2)
+	{
 		float *temp;
 		temp=(float *)malloc(sizeof(float)*j);
 
-		count=0;
+		count2=0;
 		j=0;
 		for (i=0;i<num;i++)
 		{
 			if (fabs(data[i]-mean)/5 >= sigma)
 			{
-				count++;
+				count2++;
 			}
 			else
 			{
@@ -81,6 +86,20 @@ int iter_devi(float *data, int num, float *ave, float *devi)
 		}
 
 		cal_devi(temp, j, &mean, &sigma);
+
+		count1=0;
+		j=0;
+		for (i=0;i<num;i++)
+		{
+			if (fabs(data[i]-mean)/5 >= sigma)
+			{
+				count1++;
+			}
+			else
+			{
+				j++;
+			}
+		}
 
 		free(temp);
 	}
