@@ -155,7 +155,7 @@ int main(int argc, char *argv[])
 		free(temp);
 	}
 
-	printf ("%.2lf-%.2lf\n", mean-sigma, mean+sigma);
+	printf ("%d-%d\n", (int)(mean-sigma), (int)(mean+sigma));
 	//printf ("%.2lf %.2lf %.2lf %.2lf\n", mean0, sigma0, mean, sigma);
 
 	free(data);

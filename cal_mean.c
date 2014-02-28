@@ -46,7 +46,7 @@ int main (int argc, char *argv[])
 		}
 	ave=ave/num;
 
-	printf ("%f\n", ave); 
+	printf ("%d\n", (int)(ave)); 
 	
 	free(data);
 
