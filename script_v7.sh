@@ -67,7 +67,7 @@ do
 		export up=`cat mean_beam | grep beam$beam | awk '{print $2}' | awk -F "-" '{print $1}'`
 		export down=`cat mean_beam | grep beam$beam | awk '{print $2}' | awk -F "-" '{print $2}'`
 
-		if [[ $mean -ge $down && $mean -le $up ]]; then
+		if [[ $mean -le $down && $mean -ge $up ]]; then
 			# output RFI information, including the azimuth and elevation for each sub-blocks
 			./countRFI.out $route/$dir/$beam/aux/$name $azstart $azend $elstart $elend $fnum $h $timeleg $numpoint >> "$filename"_countRFI.txt       # output results to one file
 	    
