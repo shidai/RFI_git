@@ -62,7 +62,7 @@ int main (int argc, char *argv[])
 	}
 	devi=sqrt(devi/num);
 
-	printf ("%d %f %f %f\n", beam, ave, devi, rms); // argv[3] is the beam number
+	printf ("%d %s %f\n", beam, argv[1], rms); // argv[3] is the beam number
 	
 	free(data);
 
