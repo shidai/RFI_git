@@ -71,7 +71,7 @@ do
 			# output RFI information, including the azimuth and elevation for each sub-blocks
 			./countRFI.out $route/$dir/$beam/aux/$name $azstart $azend $elstart $elend $fnum $h $timeleg $numpoint >> "$filename"_countRFI.txt       # output results to one file
 	    
-			./basic_info.out $route/$dir/$beam/aux/$name $numpoint $beam >> "$filename"_basic_info.txt       # output results to one file
+#./basic_info.out $route/$dir/$beam/aux/$name $numpoint $beam >> "$filename"_basic_info.txt       # output results to one file
 		fi
     done 
 
