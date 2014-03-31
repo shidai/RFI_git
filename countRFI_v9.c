@@ -252,7 +252,7 @@ int main (int argc, char *argv[])
 				}
 				width=end-start+1;
 		    
-				printf ("%s %d %d %f %f %f %f %f\n", argv[1], peak, width, data[i], energy, azimuth, elevation, timeleg, rms);
+				printf ("%s %d %d %f %f %f %f %f %f\n", argv[1], peak, width, data[i], energy, azimuth, elevation, timeleg, rms);
 			}
 		}
 		else if (i==0 && (data[i]-ave)>=(5.0*devi))
@@ -292,7 +292,7 @@ int main (int argc, char *argv[])
 				}
 				width=end-start+1;
 		    
-				printf ("%s %d %d %f %f %f %f %f\n", argv[1], peak, width, data[i], energy, azimuth, elevation, timeleg, rms);
+				printf ("%s %d %d %f %f %f %f %f %f\n", argv[1], peak, width, data[i], energy, azimuth, elevation, timeleg, rms);
 			}
 		}
 	}
